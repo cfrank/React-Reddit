@@ -1,0 +1,7 @@
+node_modules
+logs
+application/css/build
+application/js/build
+server/bin
+server/pkg
+server/src/constants

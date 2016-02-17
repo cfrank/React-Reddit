@@ -1,0 +1,26 @@
+.gateway{
+  margin-top: 100px;
+  text-align: center;
+  font-family: $source-sans;
+}
+
+.gateway h1{
+  font-size: 25px;
+  color: $c-main-font;
+  font-weight: normal;
+}
+
+.gateway .error{
+  width: 100%;
+  max-width: 700px;
+  margin: 75px auto 0;
+  padding: 20px;
+  background-color: $c-error-background;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.gateway .error span{
+  display: block;
+  color: white;
+}
