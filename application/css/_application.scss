@@ -1,0 +1,42 @@
+.application-container{
+    width: 100%;
+    height: 1000px;
+    background-color: $c-background;
+}
+nav.app-nav{
+    width: 100%;
+    height: 50px;
+    background-color: #fbfbfb;
+    border-bottom: 1px solid #e1e0e0;
+    line-height: 50px;
+    text-align: center;
+}
+
+.app-nav-inner{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.app-nav-inner .links ul{
+    list-style: none;
+}
+
+.app-nav-inner .links ul li{
+    display: inline-block;
+}
+
+.app-nav-inner .links ul li:not(:last-child){
+    margin-right: 50px;
+}
+
+.app-nav-inner .links ul li a{
+    font-family: $source-sans;
+    font-size: 18px;
+    color: $c-main-font;
+    text-decoration: none;
+}
+
+.app-nav-inner .links ul li a.active-app-link,
+.app-nav-inner .links ul li a:hover{
+    color: $c-orange;
+}

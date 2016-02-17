@@ -1,21 +1,22 @@
 import React from 'react';
-import AuthActions from '../../Actions/AuthActions';
 import AuthenticatedArea from '../AuthenticatedArea';
-import AuthStore from '../../Stores/AuthStore';
+import FrontActions from '../../Actions/FrontActions';
+import FrontStore from '../../Stores/FrontStore';
 
 class Front extends React.Component{
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = this.getState();
+        FrontActions.testAction();
         this._onStoreChange = this._onStoreChange.bind(this);
     }
 
     componentDidMount(){
-        AuthStore.addChangeListener(this._onStoreChange);
+        FrontStore.addChangeListener(this._onStoreChange);
     }
 
     componentWillUnmount(){
-        AuthStore.removeChangeListener(this._onStoreChange);
+        FrontStore.removeChangeListener(this._onStoreChange);
     }
 
     _onStoreChange(){
@@ -30,7 +31,9 @@ class Front extends React.Component{
 
     render(){
         return(
-            <p>Hello {this.state.hello}</p>
+            <div className="front-reddit-list">
+                <p>Hello {this.state.hello}</p>
+            </div>
         )
     }
 }
