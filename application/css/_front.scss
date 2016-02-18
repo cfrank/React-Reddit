@@ -1,6 +1,48 @@
-.front-reddit-list{
+.front-container{
     width: 100%;
     max-width: 1000px;
     height: auto;
     margin: 50px auto 0;
+}
+
+.front-reddit-list{
+    width: 70%;
+    height: auto;
+    margin-right: 5%;
+    float: left;
+}
+
+.reddit-list-type{
+    width: 25%;
+    height: auto;
+    float: left;
+}
+
+.front-list{
+    height: 300px;
+    border: 1px solid $c-border;
+    box-sizing: padding-box; // Keep the border on the outside
+}
+
+.front-list ul{
+    list-style: none;
+}
+
+.front-list ul li{
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-family: $source-sans;
+    font-size: 24px;
+    color: $c-main-font;
+    cursor: pointer;
+}
+
+.front-list ul li:not(:last-child){
+    border-bottom: 1px solid $c-border;
+}
+
+.front-list ul li.active,
+.front-list ul li:hover{
+    background-color: white;
 }

@@ -15,6 +15,7 @@ class FrontStore extends BaseStore{
                 break;
             default:
                 console.log("Hit the Store");
+                break;
         }
     }
 }
