@@ -1,3 +1,3 @@
 export default{
-    TEST_ACTION: 'TEST_ACTION'
+    FRONT_LIST_CLICK: 'FRONT_LIST_CLICK'
 }

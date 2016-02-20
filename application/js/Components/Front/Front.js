@@ -5,6 +5,7 @@ import FrontStore from '../../Stores/FrontStore';
 import FrontList from './FrontList';
 import Options from '../../Utils/Options';
 
+// TODO: This might be wronggggg
 var frontListItems = Options.front_list_items;
 
 class Front extends React.Component{
@@ -28,18 +29,17 @@ class Front extends React.Component{
 
     getState(){
         return{
-            // TODO: This might be wrongggg
-            frontListItems: frontListItems,
-            selectedListItem: 1
+            selectedListItem: FrontStore.currentFrontListId,
+            selectedListType: FrontStore.currentFrontListType
         }
     }
 
     render(){
         // Create the front list items
-        let frontList = this.state.frontListItems.map((thread) =>{
+        let frontList = frontListItems.map((thread) =>{
             let id = parseInt(thread.id),
                 selected = id === this.state.selectedListItem ? true : false,
-                boundClick = this.listItemClick.bind(this, id);
+                boundClick = this.listItemClick.bind(this, id, thread.list_type);
             return(
                 <FrontList
                     key={thread.id}
@@ -53,7 +53,9 @@ class Front extends React.Component{
         return(
             <div className="front-container">
                 <div className="front-reddit-list">
-                    <p>Hello</p>
+                    {this.state.selectedListItem}
+                    <br />
+                    {this.state.selectedListType}
                 </div>
 
                 <div className="reddit-list-type">
@@ -67,9 +69,9 @@ class Front extends React.Component{
         )
     }
 
-    listItemClick(id, event){
+    listItemClick(id, listType, event){
         if(this.state.selectedListItem !== id)
-            console.log(id);
+            FrontActions.frontListClick(id, listType);
     }
 }
 
