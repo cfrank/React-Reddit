@@ -7,16 +7,37 @@ import (
     "time"
 )
 
-func requestToken(writer http.ResponseWriter, request *http.Request){
-    switch request.Method {
+const getErrorMessage string = "Sorry I only accept POST requests! :(";
+
+func checkRequestMethod(methodType string)(bool){
+    switch methodType {
         case "POST":
-            // Handle
-            request.ParseForm();
-            requestutils.ReturnToken(writer, request.Form);
-            break;
+            return true;
         case "GET":
-            log.Println("GET request to token proxy");
-            writer.Write([]byte("Sorry I only accept POST requests..."));
+            return false;
+        default:
+            return false;
+    }
+}
+
+func requestToken(writer http.ResponseWriter, request *http.Request){
+    // Make sure
+    if checkRequestMethod(request.Method) {
+        // Handle
+        request.ParseForm();
+        requestutils.ReturnToken(writer, request.Form);
+    }else{
+        writer.Write([]byte(getErrorMessage));
+    }
+}
+
+func redditRequest(writer http.ResponseWriter, request *http.Request){
+    if checkRequestMethod(request.Method) {
+        // Handle
+        request.ParseForm();
+        requestutils.RedditApiRequest(writer, request.Form);
+    }else{
+        writer.Write([]byte(getErrorMessage));
     }
 }
 
@@ -25,8 +46,10 @@ func main(){
 
     mulplex := http.NewServeMux()
 
-    requestHandler := http.HandlerFunc(requestToken);
-    mulplex.Handle("/proxy/token", requestHandler);
+    tokenHandler := http.HandlerFunc(requestToken);
+    mulplex.Handle("/proxy/token", tokenHandler);
+    requestHandler := http.HandlerFunc(redditRequest);
+    mulplex.Handle("/proxy/request", requestHandler);
 
     log.Println("Listening on 1414...");
     serv := &http.Server{
@@ -37,7 +60,7 @@ func main(){
         MaxHeaderBytes: 1 << 20,
     }
     err := serv.ListenAndServe();
-    
+
     if err != nil {
         log.Fatal("ListenAndServe: ", err);
     }

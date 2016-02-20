@@ -66,13 +66,12 @@ export default class Home extends React.Component{
   }
 
   _login(){
-    var loginStart = new Promise(function(resolve){
+    let loginStart = new Promise(function(resolve){
       resolve(AuthActionController.startLoginSequence());
     });
 
     // Once the loginSequence has been run start the api requests
     loginStart.then(function(){
-      console.log('Starting api requests...');
       AuthActionController.loginFire();
     });
   }

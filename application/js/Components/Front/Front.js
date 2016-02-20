@@ -70,8 +70,14 @@ class Front extends React.Component{
     }
 
     listItemClick(id, listType, event){
-        if(this.state.selectedListItem !== id)
-            FrontActions.frontListClick(id, listType);
+        if(this.state.selectedListItem !== id){
+            let frontListClick = new Promise((resolve) => {
+                resolve(FrontActions.frontListClick(id, listType));
+            });
+            frontListClick.then(() => {
+                FrontActions.loadFrontPage(id, listType);
+            })
+        }
     }
 }
 

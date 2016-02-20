@@ -1,8 +1,6 @@
 import AuthActions from '../Actions/AuthActions';
 import Options from '../Utils/Options';
 
-const error = true;
-
 export default{
     getAccessToken: (code) => {
         fetch('http://www.reddit.api/api/proxy/token', {
@@ -20,5 +18,16 @@ export default{
         }).catch((error) => {
             AuthActions.authTokenError(error);
         })
+    },
+
+    loadFrontPage: (id, listType) => {
+        fetch('http://www.reddit.api/api/proxy/request', {
+            mode: 'same-origin',
+            method: 'post',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `url=${Options.api_base_url}${listType}`
+         })
     }
 }

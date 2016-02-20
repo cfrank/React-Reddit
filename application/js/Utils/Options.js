@@ -1,6 +1,8 @@
 export default{
     // App base url
     app_base_url: 'http://www.reddit.api',
+    // Reddit API base url
+    api_base_url: 'https://www.reddit.com/api/v1/',
     // Reddit Auth Base url
     auth_base_url: 'https://www.reddit.com/api/v1/authorize?',
     // Application client ID
@@ -14,7 +16,7 @@ export default{
     // Duration for which the user will be auth'd
     duration: 'permanent',
     // What we will need from the API
-    scope: 'identity,flair',
+    scope: 'identity,flair,read',
     // What we will tell the user when they have deny the API request
     code_error_text: 'You denied the Reddit API request. If this was a mistake please try again.',
     // What we will tell the user when there states sent and recieved don't match
