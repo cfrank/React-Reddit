@@ -21,13 +21,22 @@ export default{
     },
 
     loadFrontPage: (id, listType) => {
-        fetch('http://www.reddit.api/api/proxy/request', {
-            mode: 'same-origin',
-            method: 'post',
+        console.log('Loading front page...');
+        let accessToken = localStorage.getItem("AccessToken");
+        fetch(`https://oauth.reddit.com/api/v1/me`, {
+            mode: 'cors',
+            method: 'GET',
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: `url=${Options.api_base_url}${listType}`
-         })
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Authorization" : `bearer ${accessToken}`
+            }
+        }).then((response) => {
+            console.log(response);
+            return response.json();
+        }).then((data) => {
+            console.log(data);
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 }

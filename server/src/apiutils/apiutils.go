@@ -1,6 +1,7 @@
 package apiutils;
 
 import (
+    "log"
     "net/url"
     "net/http"
     "constants"
@@ -26,6 +27,24 @@ func GetAccessToken(post_body []string) (responseJson map[string]interface{}){
     client := &http.Client{};
 
     // Get the reponse
+    response, _ := client.Do(request);
+    response_text, _ := ioutil.ReadAll(response.Body);
+    json.Unmarshal([]byte(response_text), &responseJson);
+
+    return;
+}
+
+func ApiRequest(url string)(responseJson map[string]interface{}){
+    const api_url string = constants.Reddit_api_url;
+
+    request, _ := http.NewRequest("GET", api_url + url, nil);
+    request.SetBasicAuth(constants.Client_Id, constants.Client_Secret);
+
+    log.Println(request);
+
+    client := &http.Client{};
+
+    // get the response
     response, _ := client.Do(request);
     response_text, _ := ioutil.ReadAll(response.Body);
     json.Unmarshal([]byte(response_text), &responseJson);

@@ -27,22 +27,22 @@ export default{
         {
             id: '1',
             name: 'Hot',
-            list_type: 'Hot'
+            list_type: 'hot'
         },
         {
             id: '2',
             name: 'New',
-            list_type: 'New'
+            list_type: 'new'
         },
         {
             id: '3',
             name: 'Rising',
-            list_type: 'Rising'
+            list_type: 'rising'
         },
         {
             id: '4',
             name: 'Controversial',
-            list_type: 'Controversial',
+            list_type: 'controversial',
             time_filter: [
                 {
                     id: '1',
@@ -74,7 +74,7 @@ export default{
         {
             id: '5',
             name: 'Top',
-            list_type: 'Top',
+            list_type: 'top',
             time_filter: [
                 {
                     id: '1',
@@ -106,7 +106,7 @@ export default{
         {
             id: '6',
             name: 'Guilded',
-            list_type: 'Guilded'
+            list_type: 'guilded'
         }
     ]
 }

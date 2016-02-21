@@ -26,5 +26,8 @@ func ReturnToken(writer http.ResponseWriter, body url.Values){
 // Make a request for information from the Reddit API
 func RedditApiRequest(writer http.ResponseWriter, body url.Values){
     var url string = body.Get("url");
-    writer.Write([]byte(url));
+
+    response, _ := json.Marshal(apiutils.ApiRequest(url));
+
+    writer.Write(response);
 }
