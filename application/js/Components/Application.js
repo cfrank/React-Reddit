@@ -6,7 +6,9 @@ export default class Application extends React.Component{
         return(
             <div className="application-container">
                 <Navigation />
-                {this.props.children}
+                <div className="application-inner">
+                    {this.props.children}
+                </div>
             </div>
         )
     }

@@ -76,7 +76,7 @@ class Front extends React.Component{
             });
             frontListClick.then(() => {
                 FrontActions.loadFrontPage(id, listType);
-            })
+            });
         }
     }
 }

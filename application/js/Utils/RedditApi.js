@@ -31,12 +31,15 @@ export default{
                 "Authorization" : `bearer ${accessToken}`
             }
         }).then((response) => {
-            console.log(response);
-            return response.json();
+            if(response.status !== 401)
+                return response.json();
+            else{
+                throw new Error("You need to refresh the token");
+            }
         }).then((data) => {
             console.log(data);
         }).catch((error) => {
-            console.log(error);
+            console.log(error.message);
         })
     }
 }

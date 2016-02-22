@@ -23,7 +23,6 @@ class FrontStore extends BaseStore{
                 RedditApi.loadFrontPage(action.id, action.listType);
                 break;
             default:
-                console.log("Hit the Store");
                 break;
         }
     }

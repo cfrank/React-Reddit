@@ -9,6 +9,7 @@ import Gateway from './Components/Gateway';
 import AuthenticatedArea from './Components/AuthenticatedArea';
 import Application from './Components/Application';
 import Front from './Components/Front/Front';
+import Logout from './Components/Logout/Logout';
 
 const mountNode = document.getElementById('react-root');
 
@@ -23,6 +24,7 @@ render((
       {/* Authenticated Routes*/}
       <Route path="/app" component={Application}>
         <IndexRoute component={Front} />
+        <Route path="/logout" component={Logout} />
       </Route>
     </Router>
 ), mountNode)

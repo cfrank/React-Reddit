@@ -58,6 +58,7 @@ class AuthStore extends BaseStore {
                     };
                 this.addToLocalStorage(data);
                 this.loggedIn = true;
+                this.emitChange();
                 break;
             case AuthConstants.AUTH_TOKEN_ERROR:
                 this.areThereErrors = true;
@@ -73,10 +74,10 @@ class AuthStore extends BaseStore {
                 break;
             case AuthConstants.LOGOUT:
                 this.logout();
-                this.loggedIn = false;
                 this.emitChange();
                 break;
             default:
+                break;
             // No op
         };
     }
